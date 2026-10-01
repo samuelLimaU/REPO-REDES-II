@@ -1,0 +1,98 @@
+R-LAN1#show running-config
+Building configuration...
+
+Current configuration : 959 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R-LAN1
+!
+!
+!
+enable secret 5 $1$mERr$efFnqYcUZcsvzrHnVFHHJ/
+!
+!
+ip dhcp excluded-address 192.168.50.1 192.168.50.50
+!
+ip dhcp pool LAN1
+ network 192.168.50.0 255.255.255.0
+ default-router 192.168.50.1
+ dns-server 200.87.100.10
+!
+!
+aaa new-model
+!
+aaa authentication login default local 
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username admin password 0 cisco123
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017YESM-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 192.168.50.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 200.87.100.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ password 123456
+!
+!
+!
+end
